@@ -1,0 +1,51 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Oo]bj@[Rr]elease/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+
+# Burst / Cache
+[Ll]ibrary/[Pp]ackage[Cc]ache/
+
+# Asset Store Tools
+[Aa]sset[Ss]toreTools*
+
+# Visual Studio / Rider
+.vs/
+*.user
+*.suo
+*.userprefs
+*.csproj
+*.vsp
+*.pidb
+*.sln
+*.unityproj
+*.booproj
+
+# Generated project files
+*.swp
+*.tmp
+*.temp
+*.bak
+*.orig
+*.core
+
+# Crash logs
+sysinfo.txt
+
+# Packed builds
+*.apk
+*.aab
+*.unitypackage
+
+# Other caches
+/[Pp]ackages/package-lock.json
+*.pidb.meta
+
+# Ignore local test results
+TestResults/
