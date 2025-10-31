@@ -1,0 +1,15 @@
+{
+  "id": "ab_storm_ultimate",
+  "displayName": "Veredito da Tempestade",
+  "kind": "Ultimate",
+  "effect": "Damage",
+  "power": 260,
+  "potency": 0,
+  "duration": 0,
+  "cost": 3,
+  "cooldown": 4,
+  "target": "enemies",
+  "description": "Canaliza a tempestade em rajada devastadora.",
+  "comboTag": "Finisher",
+  "iconSpritePath": "Art/Icons/ability_ultimate"
+}

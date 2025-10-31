@@ -1,0 +1,1 @@
+{ "id":"orion", "name":"Orion", "class":"attacker", "rarity":5, "hp":1200,"atk":120,"def":70,"spd":105, "portraitSpritePath":"Art/Icons/portrait_orion", "iconSpritePath":"Art/Icons/portrait_orion", "abilities":[{"id":"orion_basic","name":"Golpe Estelar","cost":0},{"id":"orion_skill","name":"Ruptura Cósmica","cost":2},{"id":"orion_ultimate","name":"Portal Galáctico","cost":4}] }

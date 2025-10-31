@@ -1,0 +1,15 @@
+{
+  "id": "ab_aegis_special",
+  "displayName": "Muralha de Luz Dura",
+  "kind": "Special",
+  "effect": "Shield",
+  "power": 120,
+  "potency": 0,
+  "duration": 2,
+  "cost": 2,
+  "cooldown": 2,
+  "target": "team",
+  "description": "Barreira protetora em toda a equipe.",
+  "comboTag": "Bridge",
+  "iconSpritePath": "Art/Icons/ability_special"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "featured_v8",
+  "displayName": "Banner v8 — Destaque",
+  "baseRates": {
+    "S": 0.006,
+    "A": 0.08,
+    "B": 0.914
+  },
+  "softPityStart": 75,
+  "hardPity": 90,
+  "softPityCurve": "linear",
+  "featuredPool": [
+    "chr_orion_gemini",
+    "chr_lotus_sage",
+    "chr_stormborn",
+    "chr_aegis_architect"
+  ],
+  "standardPoolS": [
+    "chr_orion_gemini",
+    "chr_lotus_sage",
+    "chr_stormborn",
+    "chr_aegis_architect"
+  ],
+  "standardPoolA": [
+    "chr_orion_gemini",
+    "chr_lotus_sage"
+  ],
+  "standardPoolB": [
+    "chr_stormborn",
+    "chr_aegis_architect"
+  ]
+}

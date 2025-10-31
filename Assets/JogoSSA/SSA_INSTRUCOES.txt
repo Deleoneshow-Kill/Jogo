@@ -1,0 +1,27 @@
+Setup SSA (Saint Seiya Awakening look)
+-------------------------------------
+
+1. Abra o projeto no Unity 2022.3 LTS e garanta que o pacote Universal RP esteja instalado (manifest já contempla).
+2. Execute o menu Jogo -> Setup SSA (Toon).
+   - O script cria/atribui o URP Asset em Assets/Rendering/URP/URP-High.asset.
+   - Ajusta Color Space para Linear.
+   - Gera rampas, matcap e materiais toon em Assets/JogoSSA/Materials.
+   - Cria um Global Volume com Tonemapping ACES + Bloom e uma Directional Light dedicada.
+3. Aplique os materiais:
+   - M_Char_Skin_Toon em pele/tecidos.
+   - M_Armor_Gold_Toon em armaduras e metais.
+   - M_Outline_Black como segundo material no SkinnedMeshRenderer (ou adicione o componente SSAAddOutline).
+4. Ajuste se necessário:
+   - Outline _Thickness entre 0.003 e 0.008 conforme a escala.
+   - _RampBias, _SpecIntensity e _RimIntensity para personalidade de cada personagem.
+   - Rode "Jogo -> Validate SSA Setup" para confirmar se todos os renderers usam toon + outline e se o volume está ativo.
+5. Organize a iluminação do cenário com Reflection Probes e Light Probes para harmonizar com o MatCap e as sombras.
+
+Extras úteis:
+- "Jogo -> Create SSA Sample Hero" instancia um cavaleiro estilizado com rampas/MatCap já aplicados.
+- "Jogo -> Create SSA Sample Stage" produz um stage de teste (piso circular, pilares, backdrop) usando URP Lit.
+- "Jogo -> Apply SSA Toon To Selection" aplica automaticamente os materiais toon + outline nos renderers do objeto selecionado (FBX/prefab).
+- "Jogo -> Apply SSA Post/Lighting" aplica a configuração padrão de ACES, Bloom, Color Adjustments, luz direcional e câmera HDR/FXAA.
+- "SSAOutlineAutoScale" (script de componente) ajusta automaticamente a espessura do outline conforme a escala do personagem.
+
+Após esses passos, o estilo cel-shading/outline fica configurado para alcançar o visual inspirado em Saint Seiya Awakening.

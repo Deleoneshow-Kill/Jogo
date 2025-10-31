@@ -1,0 +1,15 @@
+{
+  "id": "ab_storm_basic",
+  "displayName": "Arco do Martelo",
+  "kind": "Basic",
+  "effect": "Damage",
+  "power": 110,
+  "potency": 0,
+  "duration": 0,
+  "cost": 0,
+  "cooldown": 0,
+  "target": "single",
+  "description": "Arco elétrico com o martelo.",
+  "comboTag": "Starter",
+  "iconSpritePath": "Art/Icons/ability_basic"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "ab_lotus_basic",
+  "displayName": "Mantra Cortante",
+  "kind": "Basic",
+  "effect": "Damage",
+  "power": 90,
+  "potency": 0,
+  "duration": 0,
+  "cost": 0,
+  "cooldown": 0,
+  "target": "single",
+  "description": "Ataque infundido em mantra.",
+  "comboTag": "Starter",
+  "iconSpritePath": "Art/Icons/ability_basic"
+}

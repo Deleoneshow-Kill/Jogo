@@ -1,0 +1,38 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.2/staging' branch; Version is '6000.2.9f1 (e0c4e791ab71) revision 14730471'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-deleon.mackdonald" at "2025-10-24T20:08:08.8456235Z"
+OS: 'Windows 11  (10.0.26100) 64bit Professional' Language: 'pt' Physical Memory: 16122 MB
+BatchMode: 0, IsHumanControllingUs: 1, StartBugReporterOnCrash: 1, Is64bit: 1
+Date: 2025-10-24T20:08:08Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.2.9f1\Editor\Unity.exe
+-projectPath
+.
+-logFile
+unity_errors.log
+-stackTraceLogType
+Full
+Successfully changed project path to: C:/Users/deleon.mackdonald/Downloads/Jogo_2025-10-24_19-46-33
+C:/Users/deleon.mackdonald/Downloads/Jogo_2025-10-24_19-46-33
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 17620, path: "C:/Program Files/Unity/Hub/Editor/6000.2.9f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.2+ff71f16
+  Session Id:              7d75e708a3194c26ae2c6040dad4ff2c
+  Correlation Id:          b23ddf23a41f50b02ab671462c535155
+  External correlation Id: 5471825619749921288
+  Machine Id:              IA17TjbCT6pFf4N6nGZ2n9QPmco=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-deleon.mackdonald" (connect: 0.00s, validation: 0.01s, handshake: 0.10s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-deleon.mackdonald-notifications" at "2025-10-24T20:08:08.9496258Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 4674136136018-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.02
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.16s
+Exiting without the bug reporter. Application will terminate with return code 0

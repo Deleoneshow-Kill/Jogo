@@ -1,0 +1,15 @@
+{
+  "id": "ab_storm_special",
+  "displayName": "Salto Trovejante",
+  "kind": "Special",
+  "effect": "Stun",
+  "power": 140,
+  "potency": 0,
+  "duration": 1,
+  "cost": 2,
+  "cooldown": 2,
+  "target": "single",
+  "description": "Aterra com trovão, causa dano e atordoa.",
+  "comboTag": "Bridge",
+  "iconSpritePath": "Art/Icons/ability_special"
+}

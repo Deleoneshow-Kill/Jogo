@@ -1,0 +1,15 @@
+{
+  "id": "ab_orion_special",
+  "displayName": "Fenda Espelhada",
+  "kind": "Special",
+  "effect": "Stun",
+  "power": 0,
+  "potency": 0,
+  "duration": 1,
+  "cost": 2,
+  "cooldown": 2,
+  "target": "single",
+  "description": "Aprisiona o alvo numa fenda reflexiva por 1 turno.",
+  "comboTag": "Bridge",
+  "iconSpritePath": "Art/Icons/ability_special"
+}

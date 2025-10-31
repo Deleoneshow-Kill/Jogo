@@ -1,0 +1,18 @@
+{
+  "id": "orion",
+  "name": "Orion",
+  "portraitSpritePath": "Art/Icons/portrait_orion",
+  "iconSpritePath": "Art/Icons/portrait_orion",
+  "class": "attacker",
+  "abilities": [
+    {
+      "id": "orion_basic"
+    },
+    {
+      "id": "orion_skill"
+    },
+    {
+      "id": "orion_ultimate"
+    }
+  ]
+}

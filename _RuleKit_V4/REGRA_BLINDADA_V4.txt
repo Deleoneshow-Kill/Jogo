@@ -1,0 +1,10 @@
+
+REGRA BLINDADA — V4 (Unity)
+- BASE: TMP Essentials intactos; Packages/manifest.json e packages-lock.json travados; Scenes/YAMLs intactos; sem Library/; raiz curta "Jogo/".
+- ANTI-DUPLICAÇÃO: PalaceArenaAutoBuilder único em Scripts/Scene; BattleBootstrap3D_ComboHooks sem Start(); BattleBootstrap3D.cs chama InitializeComboHooks().
+- SCENE BUILDER: SceneBuilder.BuildPalaceArena() deve ser PUBLIC STATIC e ser chamado no pós-carregamento ou pelo InitializeComboHooks().
+- CHARACTER VISUALS: Build(host, def[, bool isEnemy]) obrigatório; limpeza do host, renderer base desativado; apenas Resources.Load em Resources/Art/**; sem AssetDatabase/GUID/Addressables; fallback seguro se Resources.Load retornar null.
+- ORION/SOLARIS: chr_orion_gemini.json e chr_solaris_virgo.json presentes (id/name/portrait/icon/abilities), caminhos Art/Icons ou Art/Portraits.
+- ARTE OBRIGATÓRIA: Art/Matcaps/matcap_purple, Art/FX/cape_gradient, Art/FX/cosmic_swirl, Art/FX/orb_glow_purple, e equivalentes dourados (halo_rings, lotus_petal, bead). Pode ser placeholder, mas não pode faltar (evita personagens invisíveis).
+- PIPELINE 3D (recomendado): preferir FBX/OBJ rigados em Assets/Art/Characters + AnimatorController (Idle/Attack/Skill/Ultimate). Caso ausentes, compor com primitives é aceitável.
+- LOG LIMPO: último Editor.log sem "Script Compilation Error" / "CompilerError".

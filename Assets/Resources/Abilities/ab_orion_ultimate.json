@@ -1,0 +1,15 @@
+{
+  "id": "ab_orion_ultimate",
+  "displayName": "Domínio dos Gêmeos",
+  "kind": "Ultimate",
+  "effect": "Damage",
+  "power": 220,
+  "potency": 0,
+  "duration": 0,
+  "cost": 3,
+  "cooldown": 4,
+  "target": "enemies",
+  "description": "Dupla realidade colide causando dano em área.",
+  "comboTag": "Finisher",
+  "iconSpritePath": "Art/Icons/ability_ultimate"
+}

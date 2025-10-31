@@ -1,0 +1,21 @@
+{
+  "id": "chr_lotus_sage",
+  "displayName": "Lotus, Sábio do Loto",
+  "faction": "Asceta",
+  "role": "Support",
+  "rarity": "S",
+  "maxHP": 1000,
+  "atk": 150,
+  "defStat": 100,
+  "speed": 105,
+  "tags": [
+    "mantra",
+    "light",
+    "support"
+  ],
+  "basic": "ab_lotus_basic",
+  "special": "ab_lotus_special",
+  "ultimate": "ab_lotus_ultimate",
+  "passive": "",
+  "portraitSpritePath": "Art/Icons/icon_lotus"
+}

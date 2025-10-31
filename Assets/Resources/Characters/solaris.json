@@ -1,0 +1,44 @@
+{
+  "id": "solaris",
+  "displayName": "Solaris (Virgo)",
+  "faction": [
+    "Cosmos",
+    "Virgo"
+  ],
+  "speed": 128,
+  "power": 395,
+  "hp": 3600,
+  "attack": 240,
+  "defense": 195,
+  "portraitSpritePath": "Art/Icons/portrait_solaris",
+  "prefabPath": "",
+  "abilities": [
+    {
+      "id": "solaris_basic",
+      "type": "Basic",
+      "energyCost": 0,
+      "cooldown": 0
+    },
+    {
+      "id": "solaris_skill",
+      "type": "Special",
+      "energyCost": 2,
+      "cooldown": 2
+    },
+    {
+      "id": "solaris_ultimate",
+      "type": "Ultimate",
+      "energyCost": 4,
+      "cooldown": 4
+    },
+    {
+      "id": "solaris_passive",
+      "type": "Passive"
+    }
+  ],
+  "tags": [
+    "Support",
+    "Aura",
+    "Virgo"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "solaris",
+  "name": "Solaris",
+  "portraitSpritePath": "Art/Icons/portrait_solaris",
+  "iconSpritePath": "Art/Icons/portrait_solaris",
+  "class": "support",
+  "abilities": [
+    {
+      "id": "solaris_basic"
+    },
+    {
+      "id": "solaris_skill"
+    },
+    {
+      "id": "solaris_ultimate"
+    }
+  ]
+}

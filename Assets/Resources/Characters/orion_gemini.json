@@ -1,0 +1,44 @@
+{
+  "id": "orion_gemini",
+  "displayName": "Orion (Gêmeos)",
+  "faction": [
+    "Cosmos",
+    "Gemini"
+  ],
+  "speed": 132,
+  "power": 410,
+  "hp": 3800,
+  "attack": 255,
+  "defense": 185,
+  "portraitSpritePath": "Art/Icons/portrait_orion",
+  "prefabPath": "",
+  "abilities": [
+    {
+      "id": "orion_basic",
+      "type": "Basic",
+      "energyCost": 0,
+      "cooldown": 0
+    },
+    {
+      "id": "orion_skill",
+      "type": "Special",
+      "energyCost": 2,
+      "cooldown": 2
+    },
+    {
+      "id": "orion_ultimate",
+      "type": "Ultimate",
+      "energyCost": 4,
+      "cooldown": 4
+    },
+    {
+      "id": "orion_passive",
+      "type": "Passive"
+    }
+  ],
+  "tags": [
+    "DPS",
+    "Control",
+    "Gemini"
+  ]
+}

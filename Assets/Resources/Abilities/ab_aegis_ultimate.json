@@ -1,0 +1,15 @@
+{
+  "id": "ab_aegis_ultimate",
+  "displayName": "Arquitetura Ômega",
+  "kind": "Ultimate",
+  "effect": "Taunt",
+  "power": 200,
+  "potency": 0,
+  "duration": 2,
+  "cost": 3,
+  "cooldown": 4,
+  "target": "self",
+  "description": "Constructo colossal, ganha Provocar.",
+  "comboTag": "Finisher",
+  "iconSpritePath": "Art/Icons/ability_ultimate"
+}

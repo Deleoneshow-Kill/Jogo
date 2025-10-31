@@ -1,0 +1,15 @@
+{
+  "id": "ab_orion_basic",
+  "displayName": "Punho Relativista",
+  "kind": "Basic",
+  "effect": "Damage",
+  "power": 100,
+  "potency": 0,
+  "duration": 0,
+  "cost": 0,
+  "cooldown": 0,
+  "target": "single",
+  "description": "Golpe cósmico com distorção leve.",
+  "comboTag": "Starter",
+  "iconSpritePath": "Art/Icons/ability_basic"
+}

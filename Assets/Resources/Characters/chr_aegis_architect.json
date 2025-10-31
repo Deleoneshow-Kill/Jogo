@@ -1,0 +1,21 @@
+{
+  "id": "chr_aegis_architect",
+  "displayName": "Arquitet0 Aégis",
+  "faction": "Areté",
+  "role": "Tank",
+  "rarity": "S",
+  "maxHP": 1200,
+  "atk": 160,
+  "defStat": 140,
+  "speed": 95,
+  "tags": [
+    "hardlight",
+    "tech",
+    "tank"
+  ],
+  "basic": "ab_aegis_basic",
+  "special": "ab_aegis_special",
+  "ultimate": "ab_aegis_ultimate",
+  "passive": "",
+  "portraitSpritePath": "Art/Icons/icon_aegis"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "ab_lotus_special",
+  "displayName": "Selo de Lótus",
+  "kind": "Special",
+  "effect": "DebuffSPD",
+  "power": 0,
+  "potency": 12,
+  "duration": 2,
+  "cost": 2,
+  "cooldown": 2,
+  "target": "enemies",
+  "description": "Reduz a velocidade dos inimigos por 2 turnos.",
+  "comboTag": "Bridge",
+  "iconSpritePath": "Art/Icons/ability_special"
+}

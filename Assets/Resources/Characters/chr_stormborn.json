@@ -1,0 +1,21 @@
+{
+  "id": "chr_stormborn",
+  "displayName": "Stormborn",
+  "faction": "Tempestarii",
+  "role": "Attacker",
+  "rarity": "S",
+  "maxHP": 950,
+  "atk": 210,
+  "defStat": 90,
+  "speed": 110,
+  "tags": [
+    "thunder",
+    "hammer",
+    "attacker"
+  ],
+  "basic": "ab_storm_basic",
+  "special": "ab_storm_special",
+  "ultimate": "ab_storm_ultimate",
+  "passive": "",
+  "portraitSpritePath": "Art/Icons/icon_storm"
+}
