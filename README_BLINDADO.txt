@@ -1,4 +1,4 @@
-=== Pacote Blindado (Unity) ===
+=== Pacote Blindado (Unity) ======
 Regras de estabilidade (conforme combinado):
   1) TMP Essentials preservado em Assets/TextMesh Pro/Resources (SDF + TMP Settings.asset)
   2) Todos os .meta necessários presentes
