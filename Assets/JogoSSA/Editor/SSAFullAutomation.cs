@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 #if UNITY_RENDER_PIPELINE_URP
 using UnityEngine.Rendering.Universal;
@@ -51,6 +53,9 @@ namespace JogoSSA.Editor
             progress.Report(0.22f, "Executando correção de materiais magenta");
             RunSsaFixMagenta();
 #endif
+
+            progress.Report(0.28f, "Garantindo cenas base");
+            EnsureBaseScenes();
 
             progress.Report(0.3f, "Montando palco SSA Starter Kit");
             stage = EnsureStarterKitStage();
@@ -1145,13 +1150,49 @@ namespace JogoSSA.Editor
             return ColorUtility.TryParseHtmlString(hex, out var color) ? color : Color.white;
         }
 
+        private static void EnsureBaseScenes()
+        {
+            var desiredScenes = new (string path, string sceneName)[]
+            {
+                ("Assets/Scenes/MainMenu.unity", "MainMenu"),
+                ("Assets/Scenes/BattleScene.unity", "BattleScene"),
+                ("Assets/Scenes/TestArena.unity", "TestArena")
+            };
+
+            var previousSetup = EditorSceneManager.GetSceneManagerSetup();
+            var activeScene = SceneManager.GetActiveScene();
+
+            foreach (var (path, sceneName) in desiredScenes)
+            {
+                if (System.IO.File.Exists(path))
+                {
+                    continue;
+                }
+
+                var scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Additive);
+                scene.name = sceneName;
+                EditorSceneManager.SaveScene(scene, path);
+                EditorSceneManager.CloseScene(scene, true);
+                Debug.Log($"[SSA] Cena criada automaticamente: {path}");
+            }
+
+            if (previousSetup != null && previousSetup.Length > 0)
+            {
+                EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+            }
+            else if (activeScene.IsValid() && !string.IsNullOrEmpty(activeScene.path))
+            {
+                EditorSceneManager.OpenScene(activeScene.path, OpenSceneMode.Single);
+            }
+        }
+
 #if UNITY_RENDER_PIPELINE_URP
         private static void RunSsaFixMagenta()
         {
             if (!EditorApplication.ExecuteMenuItem("SSA/Consertar Magenta (Converter para URP)"))
             {
                 var type = System.Type.GetType("SSAFixMagenta, Assembly-CSharp");
-                var method = type?.GetMethod("Run", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
+                var method = type?.GetMethod("Run", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
                 method?.Invoke(null, null);
             }
         }

@@ -30,7 +30,11 @@ namespace CleanRPG.UI
         void Awake()
         {
             EnsureBootstrapReference();
-            uiSprite = Resources.GetBuiltinResource<Sprite>("UISprite.psd");
+            uiSprite = Resources.Load<Sprite>("UISprite");
+            if (!uiSprite)
+            {
+                uiSprite = Resources.GetBuiltinResource<Sprite>("UISprite.psd");
+            }
             knobSprite = Resources.GetBuiltinResource<Sprite>("UI/Skin/Knob.psd");
             canvas = new GameObject("HUD").AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;

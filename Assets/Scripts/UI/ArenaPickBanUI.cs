@@ -22,7 +22,11 @@ namespace CleanRPG.UI
 
         void Awake()
         {
-            uiSprite = Resources.GetBuiltinResource<Sprite>("UISprite.psd");
+            uiSprite = Resources.Load<Sprite>("UISprite");
+            if (!uiSprite)
+            {
+                uiSprite = Resources.GetBuiltinResource<Sprite>("UISprite.psd");
+            }
             canvas = new GameObject("ArenaCanvas").AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
@@ -183,9 +187,9 @@ namespace CleanRPG.UI
             panel.gameObject.SetActive(false);
         }
 
-        RectTransform CreatePanel(Vector2 pos, Vector2 size, Vector2 anchor){ var go=new GameObject("ArenaPanel", typeof(RectTransform), typeof(Image)); go.transform.SetParent(canvas.transform,false); var rt=go.GetComponent<RectTransform>(); rt.sizeDelta=size; rt.anchorMin=anchor; rt.anchorMax=anchor; rt.pivot=new Vector2(0,1); rt.anchoredPosition=pos; var img=go.GetComponent<Image>(); img.sprite=Resources.GetBuiltinResource<Sprite>("UISprite.psd"); img.type=Image.Type.Sliced; img.color=new Color(0,0,0,0.55f); return rt; }
-        RectTransform CreateSub(Transform parent,string name, Vector2 pos, Vector2 size){ var go=new GameObject(name, typeof(RectTransform), typeof(Image)); go.transform.SetParent(parent,false); var rt=go.GetComponent<RectTransform>(); rt.sizeDelta=size; rt.pivot=new Vector2(0,1); rt.anchoredPosition=pos; var img=go.GetComponent<Image>(); img.sprite=Resources.GetBuiltinResource<Sprite>("UISprite.psd"); img.type=Image.Type.Sliced; img.color=new Color(0,0,0,0.35f); return rt; }
-        Button CreateButton(Transform parent, string label, Vector2 pos){ var go=new GameObject("Btn", typeof(RectTransform), typeof(Image), typeof(Button)); go.transform.SetParent(parent,false); var rt=go.GetComponent<RectTransform>(); rt.sizeDelta=new Vector2(180,28); rt.pivot=new Vector2(0,1); rt.anchoredPosition=pos; var img=go.GetComponent<Image>(); img.sprite=Resources.GetBuiltinResource<Sprite>("UISprite.psd"); img.type=Image.Type.Sliced; img.color=new Color(0.2f,0.2f,0.2f,0.9f); var btn=go.GetComponent<Button>(); var txt=new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI)); txt.transform.SetParent(go.transform,false); var tr=txt.GetComponent<RectTransform>(); tr.sizeDelta=new Vector2(160,24); tr.pivot=new Vector2(0,1); tr.anchoredPosition=new Vector2(10,-2); var t=txt.GetComponent<TextMeshProUGUI>(); t.text=label; t.fontSize=14; t.color=Color.white; return btn; }
+    RectTransform CreatePanel(Vector2 pos, Vector2 size, Vector2 anchor){ var go=new GameObject("ArenaPanel", typeof(RectTransform), typeof(Image)); go.transform.SetParent(canvas.transform,false); var rt=go.GetComponent<RectTransform>(); rt.sizeDelta=size; rt.anchorMin=anchor; rt.anchorMax=anchor; rt.pivot=new Vector2(0,1); rt.anchoredPosition=pos; var img=go.GetComponent<Image>(); img.sprite=uiSprite; img.type=Image.Type.Sliced; img.color=new Color(0,0,0,0.55f); return rt; }
+    RectTransform CreateSub(Transform parent,string name, Vector2 pos, Vector2 size){ var go=new GameObject(name, typeof(RectTransform), typeof(Image)); go.transform.SetParent(parent,false); var rt=go.GetComponent<RectTransform>(); rt.sizeDelta=size; rt.pivot=new Vector2(0,1); rt.anchoredPosition=pos; var img=go.GetComponent<Image>(); img.sprite=uiSprite; img.type=Image.Type.Sliced; img.color=new Color(0,0,0,0.35f); return rt; }
+    Button CreateButton(Transform parent, string label, Vector2 pos){ var go=new GameObject("Btn", typeof(RectTransform), typeof(Image), typeof(Button)); go.transform.SetParent(parent,false); var rt=go.GetComponent<RectTransform>(); rt.sizeDelta=new Vector2(180,28); rt.pivot=new Vector2(0,1); rt.anchoredPosition=pos; var img=go.GetComponent<Image>(); img.sprite=uiSprite; img.type=Image.Type.Sliced; img.color=new Color(0.2f,0.2f,0.2f,0.9f); var btn=go.GetComponent<Button>(); var txt=new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI)); txt.transform.SetParent(go.transform,false); var tr=txt.GetComponent<RectTransform>(); tr.sizeDelta=new Vector2(160,24); tr.pivot=new Vector2(0,1); tr.anchoredPosition=new Vector2(10,-2); var t=txt.GetComponent<TextMeshProUGUI>(); t.text=label; t.fontSize=14; t.color=Color.white; return btn; }
         TextMeshProUGUI CreateTMP(Transform parent,string name,string content, Vector2 pos,int size=16, bool bold=false){ var go=new GameObject(name, typeof(RectTransform), typeof(TextMeshProUGUI)); go.transform.SetParent(parent,false); var rt=go.GetComponent<RectTransform>(); rt.sizeDelta=new Vector2(720,28); rt.pivot=new Vector2(0,1); rt.anchoredPosition=pos; var t=go.GetComponent<TextMeshProUGUI>(); t.text=content; t.fontSize=size; if(bold) t.fontStyle = FontStyles.Bold; t.color=Color.white; return t; }
     }
 }

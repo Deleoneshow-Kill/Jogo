@@ -2,97 +2,55 @@
 using UnityEditor;
 using UnityEngine;
 
-public static class SSAFixMagenta
+public class SSAFixMagenta
 {
-    private const string MenuPath = "SSA/Consertar Magenta (Converter para URP)";
-
-    [MenuItem(MenuPath)]
-    public static void Run()
+    [MenuItem("SSA/Consertar Magenta (Converter para URP)")]
+    static void Run()
     {
-        int converted = 0;
-        int errors = 0;
-
-        var renderers = Object.FindObjectsOfType<Renderer>(true);
-        foreach (var renderer in renderers)
+        int trocados = 0, erros = 0;
+        var rends = Object.FindObjectsOfType<Renderer>(true);
+        foreach (var r in rends)
         {
-            var materials = renderer.sharedMaterials;
-            var changed = false;
-
-            for (int i = 0; i < materials.Length; i++)
+            var mats = r.sharedMaterials;
+            for (int i = 0; i < mats.Length; i++)
             {
-                var material = materials[i];
-                if (!material)
+                var m = mats[i];
+                if (!m)
                 {
-                    materials[i] = CreateMaterial("Universal Render Pipeline/Lit");
-                    converted++;
-                    changed = true;
-                    continue;
+                    mats[i] = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                    trocados++; continue;
                 }
 
-                var shaderName = material.shader ? material.shader.name : "Hidden/InternalErrorShader";
-                if (!NeedsConversion(shaderName))
-                {
-                    continue;
-                }
+                var sh = m.shader ? m.shader.name : "Hidden/InternalErrorShader";
+                bool precisaTrocar =
+                    sh == "Hidden/InternalErrorShader" ||
+                    sh == "Standard" ||
+                    sh.StartsWith("Legacy Shaders/") ||
+                    (sh.Contains("Particles") && !sh.Contains("Universal Render Pipeline")) ||
+                    (sh.StartsWith("Unlit/") && !sh.StartsWith("Universal Render Pipeline"));
+
+                if (!precisaTrocar) continue;
 
                 try
                 {
-                    var targetShader = ResolveTargetShader(shaderName);
-                    var convertedMat = CreateMaterial(targetShader);
-                    convertedMat.CopyPropertiesFromMaterial(material);
-                    convertedMat.name = material.name + "_URP";
-                    materials[i] = convertedMat;
-                    converted++;
-                    changed = true;
+                    Material novo;
+                    if (sh.Contains("Particles"))
+                        novo = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+                    else if (sh.StartsWith("Unlit/"))
+                        novo = new Material(Shader.Find("Universal Render Pipeline/Unlit"));
+                    else
+                        novo = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+
+                    novo.CopyPropertiesFromMaterial(m);
+                    novo.name = m.name + "_URP";
+                    mats[i] = novo;
+                    trocados++;
                 }
-                catch
-                {
-                    errors++;
-                }
+                catch { erros++; }
             }
-
-            if (changed)
-            {
-                renderer.sharedMaterials = materials;
-            }
+            r.sharedMaterials = mats;
         }
-
-        Debug.Log($"[SSA Fix] Materiais convertidos: {converted} | erros: {errors}");
-    }
-
-    private static bool NeedsConversion(string shaderName)
-    {
-        if (string.IsNullOrEmpty(shaderName))
-        {
-            return true;
-        }
-
-        return shaderName == "Hidden/InternalErrorShader"
-               || shaderName == "Standard"
-               || shaderName.StartsWith("Legacy Shaders/")
-               || (shaderName.Contains("Particles") && !shaderName.Contains("Universal Render Pipeline"))
-               || (shaderName.StartsWith("Unlit/") && !shaderName.StartsWith("Universal Render Pipeline"));
-    }
-
-    private static string ResolveTargetShader(string sourceShader)
-    {
-        if (sourceShader.Contains("Particles"))
-        {
-            return "Universal Render Pipeline/Particles/Unlit";
-        }
-
-        if (sourceShader.StartsWith("Unlit/"))
-        {
-            return "Universal Render Pipeline/Unlit";
-        }
-
-        return "Universal Render Pipeline/Lit";
-    }
-
-    private static Material CreateMaterial(string shaderPath)
-    {
-        var shader = Shader.Find(shaderPath);
-        return shader ? new Material(shader) : new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        Debug.Log($"[SSA Fix] Materiais convertidos: {trocados} | erros: {erros}");
     }
 }
 #endif

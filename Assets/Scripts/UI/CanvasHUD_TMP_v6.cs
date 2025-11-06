@@ -72,7 +72,11 @@ namespace CleanRPG.UI
         {
             EnsureBootstrapReference();
 
-            uiSprite = Resources.GetBuiltinResource<Sprite>("UISprite.psd");
+            uiSprite = Resources.Load<Sprite>("UISprite");
+            if (!uiSprite)
+            {
+                uiSprite = Resources.GetBuiltinResource<Sprite>("UISprite.psd");
+            }
             knobSprite = Resources.GetBuiltinResource<Sprite>("UI/Skin/Knob.psd");
 
             var canvasGO = new GameObject("CanvasHUD", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));

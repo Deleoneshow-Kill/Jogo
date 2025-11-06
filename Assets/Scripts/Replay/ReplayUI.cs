@@ -13,7 +13,11 @@ namespace CleanRPG.Replay
 
         void Awake()
         {
-            uiSprite = Resources.GetBuiltinResource<Sprite>("UISprite.psd");
+            uiSprite = Resources.Load<Sprite>("UISprite");
+            if (!uiSprite)
+            {
+                uiSprite = Resources.GetBuiltinResource<Sprite>("UISprite.psd");
+            }
             canvas = new GameObject("ReplayCanvas").AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.gameObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
