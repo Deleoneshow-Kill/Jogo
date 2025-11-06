@@ -74,7 +74,7 @@ namespace JogoSSA.Editor
 
             }
 
-            GraphicsSettings.renderPipelineAsset = pipeline;
+            GraphicsSettings.defaultRenderPipeline = pipeline;
             for (int i = 0; i < QualitySettings.names.Length; i++)
             {
                 QualitySettings.SetQualityLevel(i, applyExpensiveChanges: false);

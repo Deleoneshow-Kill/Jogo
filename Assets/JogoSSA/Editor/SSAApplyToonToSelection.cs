@@ -16,7 +16,16 @@ namespace JogoSSA.Editor
         private const string OutlineMatPath = "Assets/JogoSSA/Materials/M_Outline_Black.mat";
 
         [MenuItem(MenuPath, priority = 80)]
-        private static void ApplyToon()
+        private static void ApplyToonMenu()
+        {
+            var success = ApplyToon(Selection.gameObjects, interactive: true);
+            if (!success)
+            {
+                return;
+            }
+        }
+
+        public static bool ApplyToon(GameObject[] targets, bool interactive = false)
         {
             var skinMat = AssetDatabase.LoadAssetAtPath<Material>(SkinMatPath);
             var armorMat = AssetDatabase.LoadAssetAtPath<Material>(ArmorMatPath);
@@ -24,18 +33,27 @@ namespace JogoSSA.Editor
 
             if (skinMat == null || armorMat == null || outlineMat == null)
             {
-                EditorUtility.DisplayDialog(
-                    "Materiais SSA ausentes",
-                    "Execute 'Jogo -> Setup SSA (Toon)' para gerar os materiais padrão antes de aplicar o toon.",
-                    "OK");
-                return;
+                if (interactive)
+                {
+                    EditorUtility.DisplayDialog(
+                        "Materiais SSA ausentes",
+                        "Execute 'Jogo -> Setup SSA (Toon)' para gerar os materiais padrão antes de aplicar o toon.",
+                        "OK");
+                }
+                else
+                {
+                    Debug.LogWarning("[SSA] Materiais padrão não encontrados. Rode 'Jogo -> Setup SSA (Toon)'.");
+                }
+                return false;
             }
 
-            var targets = Selection.gameObjects;
             if (targets == null || targets.Length == 0)
             {
-                EditorUtility.DisplayDialog("Nada selecionado", "Selecione um personagem ou prefab antes de aplicar o shader.", "OK");
-                return;
+                if (interactive)
+                {
+                    EditorUtility.DisplayDialog("Nada selecionado", "Selecione um personagem ou prefab antes de aplicar o shader.", "OK");
+                }
+                return false;
             }
 
             int rendererCount = 0;
@@ -49,17 +67,20 @@ namespace JogoSSA.Editor
                 var renderers = go.GetComponentsInChildren<Renderer>(true);
                 foreach (var renderer in renderers)
                 {
+                    if (!renderer)
+                    {
+                        continue;
+                    }
+
                     rendererCount++;
                     var materials = new List<Material>();
 
-                    // heurística simples: se o nome do renderer contém "hair" ou "mesh" universal, usa armor
                     bool isSkin = renderer.name.ToLower().Contains("skin") || renderer.name.ToLower().Contains("face");
                     bool isHair = renderer.name.ToLower().Contains("hair");
 
                     Material toonMaterial = isSkin ? new Material(skinMat) : new Material(armorMat);
                     toonMaterial.name = renderer.name + "_Toon";
 
-                    // variação rápida de cor baseada em bounds para dar diferenciação
                     var center = renderer.bounds.center;
                     float hueOffset = Mathf.Abs(Mathf.Sin(center.x + center.z));
                     var color = Color.Lerp(new Color(0.15f, 0.25f, 0.8f), new Color(0.7f, 0.2f, 0.3f), hueOffset);
@@ -82,12 +103,15 @@ namespace JogoSSA.Editor
 
             if (rendererCount == 0)
             {
-                EditorUtility.DisplayDialog("Nenhum Renderer encontrado", "Certifique-se de selecionar um objeto com MeshRenderer ou SkinnedMeshRenderer.", "OK");
+                if (interactive)
+                {
+                    EditorUtility.DisplayDialog("Nenhum Renderer encontrado", "Certifique-se de selecionar um objeto com MeshRenderer ou SkinnedMeshRenderer.", "OK");
+                }
+                return false;
             }
-            else
-            {
-                Debug.Log($"SSA Toon aplicado em {rendererCount} renderers. Ajuste manualmente as cores conforme necessário.");
-            }
+
+            Debug.Log($"SSA Toon aplicado em {rendererCount} renderers. Ajuste manualmente as cores conforme necessário.");
+            return true;
         }
     }
 }

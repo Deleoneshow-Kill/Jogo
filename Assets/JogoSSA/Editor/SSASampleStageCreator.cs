@@ -19,7 +19,12 @@ namespace JogoSSA.Editor
         private const string LightMatPath = StageMatFolder + "/M_Stage_Lightband.mat";
 
         [MenuItem(MenuPath, priority = 70)]
-        private static void CreateStage()
+        private static void CreateStageFromMenu()
+        {
+            CreateStage(interactive: true);
+        }
+
+        public static GameObject CreateStage(bool interactive = false)
         {
             EnsureMaterials();
 
@@ -51,7 +56,12 @@ namespace JogoSSA.Editor
             CreateWall(stageRoot.transform, new Vector3(-9f, 2.5f, 0f), new Vector3(0.3f, 5f, 16f), LoadMaterial(PillarMatPath));
             CreateWall(stageRoot.transform, new Vector3(9f, 2.5f, 0f), new Vector3(0.3f, 5f, 16f), LoadMaterial(PillarMatPath));
 
-            Selection.activeGameObject = stageRoot;
+            if (interactive)
+            {
+                Selection.activeGameObject = stageRoot;
+            }
+
+            return stageRoot;
         }
 
         private static void EnsureMaterials()

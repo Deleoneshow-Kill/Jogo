@@ -28,7 +28,7 @@ namespace JogoSSA.Editor
 
 #if UNITY_RENDER_PIPELINE_URP
             // Render Pipeline asset
-            if (UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset is UniversalRenderPipelineAsset urpAsset)
+            if (UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline is UniversalRenderPipelineAsset urpAsset)
             {
                 report.AppendLine("✔ URP asset atribuído: " + urpAsset.name);
             }

@@ -1,0 +1,1 @@
+// Classe substituída pelo pacote SSA_Kit. Arquivo legado mantido vazio para evitar duplicidade.
